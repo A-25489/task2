@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const etudiants = [
+            { name : "sarah" , note : undefined },
+            { name : "monya" , note : 7 },
+            { name : "carlos" , note : 13 },
+            { name : "fadhel" , note : 18 },
+        ]
+
+        function EtudiantSansNote(etudiant){
+            if (typeof(etudiant.note) == "undefined"){
+                return false
+            }
+            return true;
+            
+        }
+        function FailedStudent (etudiants){
+            if (etudiants.note >= MoyenneDeClass){
+                return { name : etudiants.name , note : etudiants.note , mention : "bien" }
+            }
+            else {
+                return { name : etudiants.name , note : etudiants.note , mention : "passable" }
+            }
+        }
+        
+        let filtredStudents = etudiants.filter(EtudiantSansNote)
+        let MoyenneDeClass = filtredStudents.reduce(function(accumulator, etudiant) {
+        return accumulator + etudiant.note / filtredStudents.length;},0)
+        
+        let result =filtredStudents.map(FailedStudent)
+        let sorted =result.sort((a, b) => b.note - a.note);
+        console.log(sorted)
+   </script>
+</body>
+</html>
